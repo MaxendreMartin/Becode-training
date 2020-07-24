@@ -1,0 +1,32 @@
+body {
+    background-color: #d4d0c5;
+}
+
+.center {
+    /*border: 1px solid red;*/
+    width: 600px;
+    height: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 250px;
+}
+
+#author {
+    color: white;
+    font-size: 22pt;
+    text-align: center;
+}
+
+#text {
+    color: black;
+    font-size: 16pt;
+    text-align: center;
+}
+
+#img {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+}
