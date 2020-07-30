@@ -1,12 +1,33 @@
 (() => {
     let hero = {
-        left: 575,
+        left: 800,
         top: 700,
     };
 
     var missiles = [];
 
-    var enemies = [];
+    var enemies = [
+        { left: 200, top: 100 },
+        { left: 300, top: 100 },
+        { left: 400, top: 100 },
+        { left: 500, top: 100 },
+        { left: 600, top: 100 },
+        { left: 700, top: 100 },
+        { left: 800, top: 100 },
+        { left: 900, top: 100 },
+        { left: 200, top: 175 },
+        { left: 300, top: 175 },
+        { left: 400, top: 175 },
+        { left: 500, top: 175 },
+        { left: 600, top: 175 },
+        { left: 700, top: 175 },
+        { left: 800, top: 175 },
+        { left: 900, top: 175 },
+    ];
+
+    let score = {
+        cible: 0,
+    };
 
     document.onkeydown = function (e) {
         console.log(e);
@@ -24,7 +45,7 @@
             //spacebar - fire
             console.log("FIRE");
             missiles.push({
-                left: hero.left - 22,
+                left: hero.left - 220,
                 top: hero.top,
             });
             drawMissiles();
@@ -54,10 +75,48 @@
         }
     }
 
+    function drawEnemies() {
+        //dessin enemy (pas en mouvement)
+        document.getElementById("enemies").innerHTML = "";
+
+        for (var i = 0; i < enemies.length; i++) {
+            document.getElementById(
+                "enemies"
+            ).innerHTML += `<div class='enemy' style='left:${enemies[i].left}px; top:${enemies[i].top}px'></div>`;
+        }
+    }
+
+    function moveEnemies() {
+        //dessin enemiy(mouvement)
+        for (var i = 0; i < enemies.length; i++) {
+            enemies[i].top = enemies[i].top + 1;
+        }
+    }
+
+    function collisionDetection() {
+        for (var enemy = 0; enemy < enemies.length; enemy++) {
+            for (var missile = 0; missile < missiles.length; missile++) {
+                if (
+                    missiles[missile].left >= enemies[enemy].left &&
+                    missiles[missile].left <= enemies[enemy].left + 50 &&
+                    missiles[missile].top <= enemies[enemy].top + 50 &&
+                    missiles[missile].top >= enemies[enemy].top
+                ) {
+                    enemies.splice(enemy, 1);
+                    missiles.splice(missile, 1);
+                }
+            }
+        }
+    }
+
     function game() {
         setTimeout(game, 100);
+        moveHero();
         moveMissiles();
         drawMissiles();
+        drawEnemies();
+        moveEnemies();
+        collisionDetection();
     }
     game();
 })();

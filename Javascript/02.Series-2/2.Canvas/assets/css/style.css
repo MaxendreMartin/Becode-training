@@ -42,3 +42,10 @@
     height: 800px;
     position: absolute;
 }
+
+.enemy {
+    background-image: url("/2.Canvas/assets/images/enemy.png");
+    height: 50px;
+    width: 50px;
+    position: absolute;
+}
