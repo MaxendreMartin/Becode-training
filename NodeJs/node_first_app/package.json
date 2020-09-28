@@ -1,0 +1,22 @@
+{
+    "name": "node_first_app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MaxendreMartin/Becode-training"
+    },
+    "keywords": [
+        "first",
+        "app"
+    ],
+    "author": "Maxendre",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
